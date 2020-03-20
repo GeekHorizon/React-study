@@ -11,6 +11,7 @@ public class HelloWorld {
     public String page(@PathVariable String name, Model model) {
       System.out.println("@@@@@@@GGGGG@@@@@1221@@@@");
       model.addAttribute("pageName", name);
+      
       return "page";
     }
 } 
