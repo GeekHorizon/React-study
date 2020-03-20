@@ -30,4 +30,5 @@ public class Category {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "mod_date")
     private Date modDate;
+
 }
