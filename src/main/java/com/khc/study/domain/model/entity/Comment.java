@@ -1,19 +1,23 @@
 package com.khc.study.domain.model.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * Comment
  */
+@Entity
+@Table
 public class Comment {
 
     @Id
     @Column(name = "comment_no")
     private String commentNo; 
 
-    @OneToOne
+ //   @OneToOne
     private Category category;
 
     public String getCommentNo() {
@@ -40,22 +44,6 @@ public class Comment {
     public Comment category(Category category) {
         this.category = category;
         return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Comment)) {
-            return false;
-        }
-        Comment comment = (Comment) o;
-        return Objects.equals(commentNo, comment.commentNo) && Objects.equals(category, comment.category);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(commentNo, category);
     }
 
     @Override

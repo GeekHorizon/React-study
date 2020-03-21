@@ -17,11 +17,8 @@ public class Post {
     @Column(name = "post_no")
     private long postNo; 
 
-    @OneToOne
+    //@OneToOne
     private Category category;
-
-    public Post() {
-    }
 
     public Post(long postNo, Category category) {
         this.postNo = postNo;
@@ -52,22 +49,6 @@ public class Post {
     public Post category(Category category) {
         this.category = category;
         return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Post)) {
-            return false;
-        }
-        Post post = (Post) o;
-        return postNo == post.postNo && Objects.equals(category, post.category);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(postNo, category);
     }
 
     @Override

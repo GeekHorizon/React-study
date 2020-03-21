@@ -1,11 +1,15 @@
 package com.khc.study.domain.model.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * User
  */
+@Entity
+@Table
 public class User {
 
     @Id
@@ -71,22 +75,6 @@ public class User {
     public User level(String level) {
         this.level = level;
         return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof User)) {
-            return false;
-        }
-        User user = (User) o;
-        return Objects.equals(userId, user.userId) && Objects.equals(name, user.name) && Objects.equals(nickName, user.nickName) && Objects.equals(level, user.level);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId, name, nickName, level);
     }
 
     @Override

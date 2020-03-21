@@ -1,6 +1,6 @@
 package com.khc.study.domain.repository;
 
-import com.khc.study.infrastructure.dao.CategoryDao;
+import com.khc.study.infrastructure.dao.CommentDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
  * CategoryRepositiory
  */
 //@Repository
-public class CategoryRepositiory {
+public class CommentRepositiory {
 
     // @Autowired
-    // private CategoryDao categoryDao;
+    // private CommentDao commentDao;
 
-
-
+    
+    
 }

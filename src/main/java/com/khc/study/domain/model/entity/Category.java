@@ -1,7 +1,6 @@
 package com.khc.study.domain.model.entity;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -82,22 +81,6 @@ public class Category {
     public Category modDate(Date modDate) {
         this.modDate = modDate;
         return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Category)) {
-            return false;
-        }
-        Category category = (Category) o;
-        return Objects.equals(categoryId, category.categoryId) && Objects.equals(name, category.name) && Objects.equals(rgstDate, category.rgstDate) && Objects.equals(modDate, category.modDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(categoryId, name, rgstDate, modDate);
     }
 
     @Override
