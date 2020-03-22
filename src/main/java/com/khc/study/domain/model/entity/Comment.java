@@ -17,8 +17,6 @@ public class Comment {
     @Column(name = "comment_no")
     private String commentNo; 
 
- //   @OneToOne
-    private Category category;
 
     public String getCommentNo() {
         return this.commentNo;
@@ -28,21 +26,9 @@ public class Comment {
         this.commentNo = commentNo;
     }
 
-    public Category getCategory() {
-        return this.category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
+  
     public Comment commentNo(String commentNo) {
         this.commentNo = commentNo;
-        return this;
-    }
-
-    public Comment category(Category category) {
-        this.category = category;
         return this;
     }
 
@@ -50,7 +36,6 @@ public class Comment {
     public String toString() {
         return "{" +
             " commentNo='" + getCommentNo() + "'" +
-            ", category='" + getCategory() + "'" +
             "}";
     }
 

@@ -22,11 +22,11 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    //@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "rgst_date")
     private Date rgstDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
+   // @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "mod_date")
     private Date modDate;
 
@@ -92,5 +92,4 @@ public class Category {
             ", modDate='" + getModDate() + "'" +
             "}";
     }
-
 }
