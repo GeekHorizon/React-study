@@ -11,16 +11,8 @@ import org.springframework.stereotype.Repository;
 /**
  * UserRepository
  */
-//@Repository
 public class UserRepository {
 
-    // @Autowired
-    // private UserDao userDao;
-
-    // public User getUser(String userId) {
-    //     Optional<User> user = userDao.findById(userId);
-    //     return user.get();
-    // }
 
 
 

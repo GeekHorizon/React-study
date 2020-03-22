@@ -4,7 +4,8 @@ module.exports = {
     context: path.resolve(__dirname, 'src/main/jsx'),
     entry: {
         main: './Countdown.jsx',
-        page1: './Page1Page.jsx'
+        page1: './Page1Page.jsx',
+        app: './App.jsx'
     },
     devtool: 'sourcemaps',
     cache: true,

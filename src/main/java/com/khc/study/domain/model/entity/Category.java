@@ -3,6 +3,7 @@ package com.khc.study.domain.model.entity;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,80 +17,16 @@ import javax.persistence.TemporalType;
 public class Category {
     
     @Id
-    @Column(name = "category_id")
-    private String categoryId; 
+	@GeneratedValue
+	private int id;
 
-    @Column(name = "name")
-    private String name;
+	@Column(unique = true)
+	private String name;
 
-    //@Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "rgst_date")
-    private Date rgstDate;
+	private Date regDate;
 
-   // @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "mod_date")
-    private Date modDate;
+	private int postCount;
 
+	private int publicPostCount;
 
-    public String getCategoryId() {
-        return this.categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getRgstDate() {
-        return this.rgstDate;
-    }
-
-    public void setRgstDate(Date rgstDate) {
-        this.rgstDate = rgstDate;
-    }
-
-    public Date getModDate() {
-        return this.modDate;
-    }
-
-    public void setModDate(Date modDate) {
-        this.modDate = modDate;
-    }
-
-    public Category categoryId(String categoryId) {
-        this.categoryId = categoryId;
-        return this;
-    }
-
-    public Category name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public Category rgstDate(Date rgstDate) {
-        this.rgstDate = rgstDate;
-        return this;
-    }
-
-    public Category modDate(Date modDate) {
-        this.modDate = modDate;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " categoryId='" + getCategoryId() + "'" +
-            ", name='" + getName() + "'" +
-            ", rgstDate='" + getRgstDate() + "'" +
-            ", modDate='" + getModDate() + "'" +
-            "}";
-    }
 }

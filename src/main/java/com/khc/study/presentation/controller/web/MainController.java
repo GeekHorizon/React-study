@@ -11,20 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HelloWorld {
+public class MainController {
 
     @Autowired
     private UserDao userdao;
 
-    @GetMapping("/tttt.html")
-    public String page(Model model) {
-      List<User> users = userdao.findAll();
-
-      System.out.println(users);
-
+    @GetMapping("/main.html")
+    public String page(final Model model) {
       model.addAttribute("pageName", "app");
-
-
       return "page";
     }
 } 
