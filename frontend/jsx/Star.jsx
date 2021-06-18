@@ -1,4 +1,4 @@
-import '../webapp/css/star.css';
+
 
 import React from 'react';
 import ReactDOM from 'react-dom';

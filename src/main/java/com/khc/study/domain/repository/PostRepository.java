@@ -1,7 +1,6 @@
 package com.khc.study.domain.repository;
 
 import java.util.Date;
-import java.util.List;
 
 import com.khc.study.domain.model.entity.Post;
 import com.khc.study.infrastructure.dao.PostDao;

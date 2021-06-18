@@ -1,7 +1,5 @@
 package com.khc.study.domain.service;
 
-import java.util.List;
-
 import com.khc.study.domain.model.entity.Post;
 import com.khc.study.domain.repository.PostRepository;
 

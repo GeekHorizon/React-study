@@ -8,5 +8,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * PostDao
  */
 public interface PostDao extends JpaRepository<Post, Integer> {
-
 }

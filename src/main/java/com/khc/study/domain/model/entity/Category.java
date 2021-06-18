@@ -27,6 +27,5 @@ public class Category {
 
 	private int postCount;
 
-	private int publicPostCount;
-
 }
+	private int publicPostCount;

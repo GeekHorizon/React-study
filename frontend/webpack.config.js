@@ -1,9 +1,10 @@
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
  
 module.exports = {
-    context: path.resolve(__dirname, 'src/main/jsx'),
+    context: path.resolve(__dirname, 'jsx'),
     entry: {
-        main: './Countdown.jsx',
+        main: './Menu.jsx',
         page1: './Page1Page.jsx',
         app: './App.jsx'
     },
@@ -11,7 +12,7 @@ module.exports = {
     cache: true,
     output: {
         path: __dirname,
-        filename: './src/main/webapp/js/react/[name].bundle.js'
+        filename: '../src/main/webapp/js/react/[name].bundle1.js'
     },
     mode: 'none',
     resolve : {

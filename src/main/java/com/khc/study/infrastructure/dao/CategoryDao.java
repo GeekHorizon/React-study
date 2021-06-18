@@ -8,5 +8,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * CategoryDao
  */
 public interface CategoryDao extends JpaRepository<Category, String> {
-
 }
