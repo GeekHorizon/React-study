@@ -1,16 +1,23 @@
 package com.khc.study.domain.model.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.khc.study.domain.model.dto.PostDto;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 /**
  * Post
@@ -21,44 +28,52 @@ public class Post {
     
     @Id
 	@GeneratedValue
-	int id;
-
+    @Column(name = "post_id")
+	private Long id;
     
-	String userId;
-	String name;
+	private String name;
 
 	@Column(nullable = false)
-	String title;
+	private String title;
 
-	String subtitle;
+	private String subtitle;
 
 	@Lob
-	String content;
+	private String content;
 
-	Date regDate;
+    @CreationTimestamp
+    private LocalDateTime createdTimeAt;
+    
+    @UpdateTimestamp
+    private LocalDateTime updateTimeAt;
 
-	Date updateDate;
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comments;
 
-//	private int categoryId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-	//@ManyToOne(fetch = FetchType.LAZY)
-	//@JoinColumn(name = "categoryId", insertable = false, updatable = false)
-//	private Category category;
+    public Post(Builder builder) {
+        this.id = builder.id;
+        this.userId = builder.userId;
+        this.name = builder.name;
+        this.title = builder.title;
+        this.subtitle = builder.subtitle;
+        this.content = builder.content;
+        this.createdTimeAt = builder.createdTimeAt;
+        this.updateTimeAt = builder.updateTimeAt;
+    }
 
-    public int getId() {
+    public Post() {
+    }
+
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return this.userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getName() {
@@ -93,104 +108,80 @@ public class Post {
         this.content = content;
     }
 
-    public Date getRegDate() {
-        return this.regDate;
+    public LocalDateTime getCreatedTimeAt() {
+        return this.createdTimeAt;
     }
 
-    public void setRegDate(Date regDate) {
-        this.regDate = regDate;
+    public void setCreatedTimeAt(LocalDateTime createdTimeAt) {
+        this.createdTimeAt = createdTimeAt;
     }
 
-    public Date getUpdateDate() {
-        return this.updateDate;
+    public LocalDateTime getUpdateTimeAt() {
+        return this.updateTimeAt;
     }
 
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdateTimeAt(LocalDateTime updateTimeAt) {
+        this.updateTimeAt = updateTimeAt;
     }
 
-    // public int getCategoryId() {
-    //     return this.categoryId;
-    // }
 
-    // public void setCategoryId(int categoryId) {
-    //     this.categoryId = categoryId;
-    // }
-
-    // public Category getCategory() {
-    //     return this.category;
-    // }
-
-    // public void setCategory(Category category) {
-    //     this.category = category;
-    // }
-
-    public Post id(int id) {
-        this.id = id;
-        return this;
+    public List<Comment> getComments() {
+        return this.comments;
     }
 
-    public Post userId(String userId) {
-        this.userId = userId;
-        return this;
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+        comment.setPost(this);
     }
 
-    public Post name(String name) {
-        this.name = name;
-        return this;
+    public User getUser() {
+        return this.user;
     }
 
-    public Post title(String title) {
-        this.title = title;
-        return this;
+    public void setUser(User user) {
+        this.user = user;
     }
-
-    public Post subtitle(String subtitle) {
-        this.subtitle = subtitle;
-        return this;
-    }
-
-    public Post content(String content) {
-        this.content = content;
-        return this;
-    }
-
-    public Post regDate(Date regDate) {
-        this.regDate = regDate;
-        return this;
-    }
-
-    public Post updateDate(Date updateDate) {
-        this.updateDate = updateDate;
-        return this;
-    }
-
-    // public Post categoryId(int categoryId) {
-    //     this.categoryId = categoryId;
-    //     return this;
-    // }
-
-    // public Post category(Category category) {
-    //     this.category = category;
-    //     return this;
-    // }
 
     @Override
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", userId='" + getUserId() + "'" +
             ", name='" + getName() + "'" +
             ", title='" + getTitle() + "'" +
             ", subtitle='" + getSubtitle() + "'" +
             ", content='" + getContent() + "'" +
-            ", regDate='" + getRegDate() + "'" +
-            ", updateDate='" + getUpdateDate() + "'" +
-      //      ", categoryId='" + getCategoryId() + "'" +
-      //      ", category='" + getCategory() + "'" +
+            ", createdTimeAt='" + getCreatedTimeAt() + "'" +
+            ", updateTimeAt='" + getUpdateTimeAt() + "'" +
+            ", comments='" + getComments() + "'" +
+            ", user='" + getUser() + "'" +
             "}";
     }
 
+    public static class Builder {
+        private Long id;
+	    private String userId;
+	    private String name;
+        private String title;
+        private String subtitle;
+        private String content;
+        private LocalDateTime createdTimeAt;
+        private LocalDateTime updateTimeAt;
+
+        public Builder(PostDto postDto) {
+            this.id = postDto.getId();
+            this.userId = postDto.getUserId();
+            this.name = postDto.getName();
+            this.title = postDto.getTitle();
+            this.subtitle = postDto.getSubtitle();
+            this.content = postDto.getContent();
+            this.createdTimeAt = postDto.getCreatedTimeAt();
+            this.updateTimeAt = postDto.getUpdateTimeAt();
+        }
+
+        public Post build(){
+            return new Post(this);
+        }
+    }
 
 
 }

@@ -1,5 +1,5 @@
 package com.khc.study.presentation.controller.rest;
- 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -22,18 +22,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 /**
  * 
  */
 @RestController
 public class PostRestController {
-    
+
     @Autowired
     private PostService postService;
 
-
-    @RequestMapping(value = {"/post/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = { "/post/list" }, method = RequestMethod.GET)
     public Page<Post> list(@PageableDefault(sort = { "id" }, direction = Direction.DESC, size = 5) Pageable pageable) {
         Page<Post> postPage = postService.getPostList(pageable);
         return postPage;
@@ -41,16 +39,12 @@ public class PostRestController {
 
     @RequestMapping(value = "/post/write", method = RequestMethod.GET)
     public Post writePost(Post post) {
-
-
         return postService.writePost(post);
     }
 
-    @RequestMapping(value =  "/post/delete", method = RequestMethod.GET)
-    public boolean deletePost(@RequestParam(name="id") int id) {
+    @RequestMapping(value = "/post/delete", method = RequestMethod.GET)
+    public boolean deletePost(@RequestParam(name = "id") int id) {
         postService.deletePost(id);
-        
         return true;
-
     }
-} 
+}

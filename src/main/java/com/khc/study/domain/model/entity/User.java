@@ -1,8 +1,11 @@
 package com.khc.study.domain.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -14,7 +17,7 @@ public class User {
 
     @Id
     @Column(name = "user_id")
-    private String userId; 
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -24,13 +27,16 @@ public class User {
 
     @Column(name = "level")
     private String level;
+    
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
 
-    public String getUserId() {
-        return this.userId;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -56,35 +62,16 @@ public class User {
     public void setLevel(String level) {
         this.level = level;
     }
+   
 
-    public User userId(String userId) {
-        this.userId = userId;
-        return this;
+    public List<Post> getPosts() {
+        return this.posts;
     }
 
-    public User name(String name) {
-        this.name = name;
-        return this;
+    public void addPost(Post post) {
+        this.posts.add(post);
+        post.setUser(this);
     }
 
-    public User nickName(String nickName) {
-        this.nickName = nickName;
-        return this;
-    }
-
-    public User level(String level) {
-        this.level = level;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " userId='" + getUserId() + "'" +
-            ", name='" + getName() + "'" +
-            ", nickName='" + getNickName() + "'" +
-            ", level='" + getLevel() + "'" +
-            "}";
-    }
 
 }

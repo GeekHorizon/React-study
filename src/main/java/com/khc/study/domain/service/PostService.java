@@ -1,5 +1,10 @@
 package com.khc.study.domain.service;
 
+import java.time.LocalDateTime;
+
+import javax.transaction.Transactional;
+
+import com.khc.study.domain.model.dto.PostDto;
 import com.khc.study.domain.model.entity.Post;
 import com.khc.study.domain.repository.PostRepository;
 
@@ -17,15 +22,33 @@ public class PostService {
     private PostRepository postRepository;
 
     public Page<Post> getPostList(Pageable pageable) {
-        return postRepository.getPostList(pageable);
+        return postRepository.findAll(pageable);
     }
 
+    @Transactional
     public Post writePost(Post post) {
-        return postRepository.writePost(post);
+        post.setCreatedTimeAt(LocalDateTime.now());
+        return postRepository.save(post);
     }
 
-    public boolean deletePost(int id) {
-        return postRepository.deletePost(id);
+    @Transactional
+	public Post editPost(PostDto postDto) {
+		Post post = getPostById(postDto.getId());
+        
+        post.setContent(post.getContent());
+        post.setUpdateTimeAt(LocalDateTime.now());
+        post.setName(postDto.getName());
+        post.setSubtitle(postDto.getSubtitle());
+
+		return post;
+	}
+
+    public Post getPostById(long id) {
+        return postRepository.getOne(id);
     }
-    
+
+    public void deletePost(long id) throws IllegalArgumentException {
+        postRepository.deleteById(id);
+    }
+
 }
