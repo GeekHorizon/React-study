@@ -1,7 +1,6 @@
 package com.khc.study.domain.repository;
 
 import com.khc.study.domain.model.entity.Category;
-import com.khc.study.infrastructure.dao.CategoryDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;

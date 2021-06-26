@@ -24,9 +24,6 @@ public class User {
 
     @Column(name = "nickname")
     private String nickName;
-
-    @Column(name = "level")
-    private String level;
     
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
@@ -54,16 +51,7 @@ public class User {
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
-
-    public String getLevel() {
-        return this.level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-   
-
+    
     public List<Post> getPosts() {
         return this.posts;
     }

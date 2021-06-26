@@ -6,7 +6,8 @@ module.exports = {
     entry: {
         main: './Menu.jsx',
         page1: './Page1Page.jsx',
-        app: './App.jsx'
+        app: './App.jsx',
+        index: './Index.jsx'
     },
     devtool: 'sourcemaps',
     cache: true,

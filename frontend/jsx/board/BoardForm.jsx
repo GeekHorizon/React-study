@@ -10,7 +10,7 @@ class BoardForm extends React.Component {
             this.brdtitle.value = "";
             this.brdwriter.value = "";        
             return true;
-        }
+    }
         
         this.brdtitle.value = selectedBoard.brdtitle;
         this.brdwriter.value = selectedBoard.brdwriter;        

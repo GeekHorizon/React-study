@@ -26,7 +26,8 @@ public class PostService {
     }
 
     @Transactional
-    public Post writePost(Post post) {
+    public Post writePost(PostDto postDto) {
+        Post post = new Post.Builder(postDto).build();
         post.setCreatedTimeAt(LocalDateTime.now());
         return postRepository.save(post);
     }
@@ -47,6 +48,7 @@ public class PostService {
         return postRepository.getOne(id);
     }
 
+    @Transactional
     public void deletePost(long id) throws IllegalArgumentException {
         postRepository.deleteById(id);
     }

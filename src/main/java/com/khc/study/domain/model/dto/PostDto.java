@@ -1,14 +1,13 @@
 package com.khc.study.domain.model.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * PostDto
  */
 public class PostDto {
 	private Long id;
-	private String userId;
+
 	private String name;
 
 	private String title;
@@ -27,14 +26,6 @@ public class PostDto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return this.userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getName() {

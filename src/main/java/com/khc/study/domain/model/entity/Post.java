@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.khc.study.domain.model.dto.PostDto;
@@ -56,7 +55,6 @@ public class Post {
 
     public Post(Builder builder) {
         this.id = builder.id;
-        this.userId = builder.userId;
         this.name = builder.name;
         this.title = builder.title;
         this.subtitle = builder.subtitle;
@@ -159,7 +157,6 @@ public class Post {
 
     public static class Builder {
         private Long id;
-	    private String userId;
 	    private String name;
         private String title;
         private String subtitle;
@@ -169,7 +166,6 @@ public class Post {
 
         public Builder(PostDto postDto) {
             this.id = postDto.getId();
-            this.userId = postDto.getUserId();
             this.name = postDto.getName();
             this.title = postDto.getTitle();
             this.subtitle = postDto.getSubtitle();
